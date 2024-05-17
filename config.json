@@ -1,0 +1,6 @@
+{
+  "backendBaseUrl": "http://47.116.201.115:8080",
+  "timeout": 5000,
+  "retryAttempts": 3,
+  "logLevel": "debug"
+}

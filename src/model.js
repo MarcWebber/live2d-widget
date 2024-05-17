@@ -3,7 +3,7 @@ import randomSelection from "./utils.js";
 
 class Model {
     constructor(config) {
-        let { apiPath, cdnPath } = config;
+        let {apiPath, cdnPath} = config;
         let useCDN = false;
         if (typeof cdnPath === "string") {
             useCDN = true;

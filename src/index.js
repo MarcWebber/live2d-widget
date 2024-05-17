@@ -25,7 +25,7 @@ function loadWidget(config) {
         }
         for (let tool of config.tools) {
             if (tools[tool]) {
-                const { icon, callback } = tools[tool];
+                const {icon, callback} = tools[tool];
                 document.getElementById("waifu-tool").insertAdjacentHTML("beforeend", `<span id="waifu-tool-${tool}">${icon}</span>`);
                 document.getElementById(`waifu-tool-${tool}`).addEventListener("click", callback);
             }
@@ -34,7 +34,7 @@ function loadWidget(config) {
 
     function welcomeMessage(time) {
         if (location.pathname === "/") { // 如果是主页
-            for (let { hour, text } of time) {
+            for (let {hour, text} of time) {
                 const now = new Date(),
                     after = hour.split("-")[0],
                     before = hour.split("-")[1] || after;
@@ -43,7 +43,7 @@ function loadWidget(config) {
                 }
             }
         }
-        const text = `欢迎阅读<span>「${document.title.split(" - ")[0]}」</span>`;
+        const text = `你好，欢迎阅读<span>「${document.title.split(" - ")[0]}」</span>`;
         let from;
         if (document.referrer !== "") {
             const referrer = new URL(document.referrer),
@@ -83,7 +83,7 @@ function loadWidget(config) {
         }, 1000);
         showMessage(welcomeMessage(result.time), 7000, 11);
         window.addEventListener("mouseover", event => {
-            for (let { selector, text } of result.mouseover) {
+            for (let {selector, text} of result.mouseover) {
                 if (!event.target.closest(selector)) continue;
                 if (lastHoverElement === selector) return;
                 lastHoverElement = selector;
@@ -94,7 +94,7 @@ function loadWidget(config) {
             }
         });
         window.addEventListener("click", event => {
-            for (let { selector, text } of result.click) {
+            for (let {selector, text} of result.click) {
                 if (!event.target.closest(selector)) continue;
                 text = randomSelection(text);
                 text = text.replace("{text}", event.target.innerText);
@@ -102,7 +102,7 @@ function loadWidget(config) {
                 return;
             }
         });
-        result.seasons.forEach(({ date, text }) => {
+        result.seasons.forEach(({date, text}) => {
             const now = new Date(),
                 after = date.split("-")[0],
                 before = date.split("-")[1] || after;
@@ -113,7 +113,8 @@ function loadWidget(config) {
             }
         });
 
-        const devtools = () => { };
+        const devtools = () => {
+        };
         console.log("%c", devtools);
         devtools.toString = () => {
             showMessage(result.message.console, 6000, 9);
